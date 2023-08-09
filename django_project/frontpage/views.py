@@ -1,8 +1,13 @@
 from django.shortcuts import render
-# Create your views here.
+from .models import Post
+
+
 
 def home(request):
-    return render(request, 'frontpage/home.html')
+    context = {
+        'posts': Post.objects.all()
+    }
+    return render(request, 'frontpage/home.html', context)
 
 def about(request):
     return render(request, 'frontpage/about.html')
